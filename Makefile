@@ -27,6 +27,10 @@ DOCKER_PROGRESS ?= plain
 # Export IMAGE_VERSION for usage in docker compose commands
 export IMAGE_VERSION
 
+# Use STEAM_USER/STEAM_PASS as aliases for STEAM_USERNAME/STEAM_PASSWORD if they exist
+STEAM_USERNAME ?= $(STEAM_USER)
+STEAM_PASSWORD ?= $(STEAM_PASS)
+
 # Export make variables as actual environment variables,
 # so that we can pass them as docker secrets during build
 export STEAM_USERNAME := $(call strip_quotes,STEAM_USERNAME)
