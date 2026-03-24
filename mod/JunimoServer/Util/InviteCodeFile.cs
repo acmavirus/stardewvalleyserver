@@ -10,6 +10,7 @@ namespace JunimoServer.Util
     /// </summary>
     public static class InviteCodeFile
     {
+        public static event Action<string> OnInviteCodeChanged;
         private static readonly string FilePath = "/tmp/invite-code.txt";
 
         /// <summary>
@@ -43,6 +44,7 @@ namespace JunimoServer.Util
             {
                 File.WriteAllText(FilePath, inviteCode);
                 monitor.Log($"Invite code written to '{FilePath}'", LogLevel.Trace);
+                OnInviteCodeChanged?.Invoke(inviteCode);
                 return true;
             }
             catch (Exception ex)
