@@ -54,6 +54,7 @@ RUN curl -L "https://github.com/Pathoschild/SMAPI/releases/download/${SMAPI_VERS
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS mod-builder
 
 ARG BUILD_CONFIGURATION=Debug
+ARG CACHE_BUSTER=1
 
 COPY --from=game-downloader /game /game
 

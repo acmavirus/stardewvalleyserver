@@ -56,6 +56,7 @@ build:
 	@docker buildx build \
 		--platform=linux/amd64 \
 		--build-arg BUILD_CONFIGURATION=$(BUILD_CONFIGURATION) \
+		--build-arg CACHE_BUSTER=$(shell date +%s 2>/dev/null || echo 123) \
 		-t $(IMAGE_NAME):$(IMAGE_VERSION) \
 		$(if $(filter-out local,$(IMAGE_VERSION)),-t $(IMAGE_NAME):latest) \
 		--secret id=steam_username,env=STEAM_USERNAME \
