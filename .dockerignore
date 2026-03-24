@@ -1,0 +1,62 @@
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea/
+.vs/
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Git files
+.github/
+.gitattributes
+.gitignore
+.gitmodules
+
+# Project dirs
+decompiled/
+mod/.vs/
+mod/JunimoServer/bin/
+mod/JunimoServer/obj/
+mods/
+sub_modules/
+
+# Build artifacts (avoid Windows path issues in Docker)
+tools/**/bin/
+tools/**/obj/
+
+# Dependency folders
+**/node_modules/
+
+# Project files
+.dockerignore
+.editorconfig
+docker-compose*.yml
+LICENSE
+Makefile
+README.md
+
+# Documentation (not needed in build context)
+docs/
+*.md
+!.env.example
+
+# Development tools (not needed in build context)
+.claude/
+commitlint.config.js
+lefthook.yml
+CONTRIBUTING.md
+
+# Tools not used in Docker build
+tools/cli/
+tools/rag-system/
+
+# Root package management (not used in Docker build)
+/package.json
+/package-lock.json

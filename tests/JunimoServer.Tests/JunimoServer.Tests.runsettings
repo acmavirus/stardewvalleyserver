@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <ResultsDirectory>..\..\TestResults</ResultsDirectory>
+    <EnvironmentVariables>
+      <!-- Set to "true" to use containerized game clients instead of local process -->
+      <SDVD_CONTAINERIZED_CLIENTS>true</SDVD_CONTAINERIZED_CLIENTS>
+      <SDVD_TEST_VERBOSE>true</SDVD_TEST_VERBOSE>
+      <!-- Set to "true" to enable JSONL logging to TestResults/Logs/tests.jsonl (for AI agents) -->
+      <SDVD_REPORTER_JSONL>true</SDVD_REPORTER_JSONL>
+    </EnvironmentVariables>
+  </RunConfiguration>
+  <LoggerRunSettings>
+    <Loggers>
+      <Logger friendlyName="trx" enabled="True">
+        <Configuration>
+          <LogFileName>TestResults.trx</LogFileName>
+        </Configuration>
+      </Logger>
+    </Loggers>
+  </LoggerRunSettings>
+  <!-- xUnit.net configuration -->
+  <xUnit>
+    <!-- Stop running further tests once a test has failed -->
+    <StopOnFail>true</StopOnFail>
+    <!-- Disable parallel test execution for predictable order -->
+    <ParallelizeTestCollections>false</ParallelizeTestCollections>
+    <ParallelizeAssembly>false</ParallelizeAssembly>
+  </xUnit>
+</RunSettings>

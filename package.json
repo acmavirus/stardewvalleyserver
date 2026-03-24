@@ -1,0 +1,17 @@
+{
+  "name": "sdvd-server",
+  "version": "1.1.0",
+  "description": "Stardew Valley Dedicated Server",
+  "private": true,
+  "scripts": {
+    "postinstall": "lefthook install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.4.4",
+    "@commitlint/config-conventional": "^20.4.4",
+    "lefthook": "^2.1.4"
+  },
+  "dependencies": {
+    "pako": "^2.1.0"
+  }
+}
