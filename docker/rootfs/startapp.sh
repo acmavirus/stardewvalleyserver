@@ -250,11 +250,7 @@ mkfifo "${INPUT_FIFO}"
 
 # Start SMAPI with stdin from FIFO, output to log file and stdout
 # Using 'script' to create a PTY so SMAPI outputs colors (thinks it's a terminal)
-# Using tail -f on the FIFO to keep it open and avoid blocking
-# Note: 'script' writes to both stdout (for docker logs) and the typescript file simultaneously
-script -q -f --return -c "tail -f \"${INPUT_FIFO}\" | \"${SMAPI_EXECUTABLE}\"" "${LOG_FILE}" &
-SMAPI_PID=$!
+script -q -f --return -c "tail -f \"${INPUT_FIFO}\" | \"${SMAPI_EXECUTABLE}\"" "${LOG_FILE}"
 
-# Wait for SMAPI process to exit (when it exits, the server has stopped)
-wait $SMAPI_PID
-echo "Server session ended"
+echo "Server session ended with exit code $?"
+exit $?

@@ -504,7 +504,8 @@ namespace JunimoServer.Services.Api
 
                 // Create and configure listener
                 _listener = new HttpListener();
-                _listener.Prefixes.Add($"http://+:{Env.ApiPort}/");
+                _listener.Prefixes.Add($"http://*:{Env.ApiPort}/");
+                _listener.IgnoreWriteExceptions = true;
                 _listener.Start();
 
                 // Start processing requests
@@ -984,7 +985,12 @@ namespace JunimoServer.Services.Api
             string? gogInviteCode = null;
             if (!string.IsNullOrEmpty(inviteCode))
             {
-                var baseCode = inviteCode.Length > 1 ? inviteCode.Substring(1) : inviteCode;
+                var baseCode = inviteCode;
+                if (inviteCode.Length > 1 && (inviteCode.StartsWith("S") || inviteCode.StartsWith("G")))
+                {
+                    baseCode = inviteCode.Substring(1);
+                }
+                
                 gogInviteCode = GalaxyNetHelper.GalaxyInvitePrefix + baseCode;
                 if (SteamGameServer.SteamGameServerService.IsInitialized)
                 {
