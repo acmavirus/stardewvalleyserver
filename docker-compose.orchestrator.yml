@@ -1,0 +1,20 @@
+services:
+  orchestrator:
+    build:
+      context: ./services/orchestrator
+      dockerfile: Dockerfile
+    image: junimo/orchestrator:latest
+    container_name: junimo-orchestrator
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - orchestrator-data:/data
+    environment:
+      - PORT=3000
+      - MASTER_API_KEY=${MASTER_API_KEY:-master-key}
+      - NODE_ENV=production
+    restart: always
+
+volumes:
+  orchestrator-data:
